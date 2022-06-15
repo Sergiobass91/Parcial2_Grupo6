@@ -9,8 +9,17 @@ namespace Parcial2_Grupo6
 {
     public partial class IngresoAlumnos : System.Web.UI.Page
     {
+        private DataLinqClassDataContext instance;
+        //public void CleanForm() {
+        //    foreach (Control c in this.Controls) {
+        //        if (c is TextBox)
+        //            //falta resolver clean
+        //    }
+        //}
         protected void Page_Load(object sender, EventArgs e)
         {
+            instance = new DataLinqClassDataContext();
+
             //Evitamos que recargue el DDL en cada envio
             if (!IsPostBack)
             {
@@ -23,8 +32,6 @@ namespace Parcial2_Grupo6
 
         protected void Enviar_Click(object sender, EventArgs e)
         {
-            DataLinqClassDataContext instance = new DataLinqClassDataContext();
-
             alumno alumnos = new alumno
             {
                 apellido_alumno = txtApellido.Text,
@@ -42,7 +49,7 @@ namespace Parcial2_Grupo6
 
         protected void Listado_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("ListadoComentarios.aspx");
         }
     }
 }

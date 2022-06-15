@@ -10,6 +10,8 @@
     <form id="form1" runat="server">
         <div>
             <asp:GridView runat="server" ID="GridView1"></asp:GridView>
+
+            <asp:Button Text="Volver" runat="server" onClick="Volver_Click"/>
         </div>
     </form>
 </body>

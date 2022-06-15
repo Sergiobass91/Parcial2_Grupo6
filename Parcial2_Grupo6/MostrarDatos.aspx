@@ -28,10 +28,10 @@
                     </tr>
                 </tbody>
             </table>
-            <%--<asp:GridView ID="GridView1" runat="server"></asp:GridView>--%>
+
             <asp:TextBox runat="server" id="txtComentario" TextMode="MultiLine" Columns="50" Rows="5" placeholder="Ingrese un comentario"/>
             <br />
-            <asp:Button Text="Enviar" runat="server" id="btnEnviar" onClick="Enviar_Click"/>
+            <asp:Button Text="Agregar comentario" runat="server" id="btnEnviar" onClick="Enviar_Click"/>
         </div>
     </form>
 </body>

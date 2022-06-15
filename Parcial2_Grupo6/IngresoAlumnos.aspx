@@ -25,12 +25,13 @@
             <asp:TextBox runat="server" id="txtEmail"/>
             <br />
 
-            <%--<asp:Label Text="Seleccione turno:" runat="server" />--%>
             <asp:DropDownList runat="server" ID="ddlTurnos"> </asp:DropDownList>
 
             <asp:Button Text="Enviar" runat="server" id="btnEnviar" onClick="Enviar_Click"/>
-            <asp:Button Text="Ver Listado" runat="server" onClick="Listado_Click"/>
+            <br />
             <input type="reset" name="Limpiar" value="Limpiar" />
+            <br />
+            <asp:Button Text="Ver Listado" runat="server" onClick="Listado_Click"/>
         </div>
     </form>
 </body>

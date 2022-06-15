@@ -9,9 +9,19 @@ namespace Parcial2_Grupo6
 {
     public partial class ListadoComentarios : System.Web.UI.Page
     {
+        private DataLinqClassDataContext instance;
         protected void Page_Load(object sender, EventArgs e)
         {
+            instance = new DataLinqClassDataContext();
+            IQueryable consultaTodosComentarios = instance.comentarios.Select(dato => dato);
 
+            GridView1.DataSource = consultaTodosComentarios;
+            GridView1.DataBind();
+        }
+
+        protected void Volver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ingresoAlumnos.aspx");
         }
     }
 }
