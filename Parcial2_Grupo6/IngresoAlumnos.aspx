@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Ingreso Alumnos</title>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -29,6 +29,7 @@
             <asp:DropDownList runat="server" ID="ddlTurnos"> </asp:DropDownList>
 
             <asp:Button Text="Enviar" runat="server" id="btnEnviar" onClick="Enviar_Click"/>
+            <asp:Button Text="Ver Listado" runat="server" onClick="Listado_Click"/>
             <input type="reset" name="Limpiar" value="Limpiar" />
         </div>
     </form>

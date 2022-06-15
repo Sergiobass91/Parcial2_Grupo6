@@ -21,5 +21,6 @@ create table comentarios (
 );
 
 select * from alumnos;
+select * from comentarios;
 
 delete  from alumnos;

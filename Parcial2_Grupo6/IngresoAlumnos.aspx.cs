@@ -36,6 +36,13 @@ namespace Parcial2_Grupo6
 
             instance.alumnos.InsertOnSubmit(alumnos);
             instance.SubmitChanges();
+
+            Response.Redirect($"MostrarDatos.aspx?documento={txtDocumento.Text}");
+        }
+
+        protected void Listado_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

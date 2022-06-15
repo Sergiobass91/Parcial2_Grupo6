@@ -69,6 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="IngresoAlumnos.aspx" />
+    <Content Include="ListadoComentarios.aspx" />
+    <Content Include="MostrarDatos.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +85,20 @@
     </Compile>
     <Compile Include="IngresoAlumnos.aspx.designer.cs">
       <DependentUpon>IngresoAlumnos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoComentarios.aspx.cs">
+      <DependentUpon>ListadoComentarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListadoComentarios.aspx.designer.cs">
+      <DependentUpon>ListadoComentarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MostrarDatos.aspx.cs">
+      <DependentUpon>MostrarDatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MostrarDatos.aspx.designer.cs">
+      <DependentUpon>MostrarDatos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
