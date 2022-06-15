@@ -71,6 +71,7 @@
     <Content Include="IngresoAlumnos.aspx" />
     <Content Include="ListadoComentarios.aspx" />
     <Content Include="MostrarDatos.aspx" />
+    <Content Include="src\CSS\style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
