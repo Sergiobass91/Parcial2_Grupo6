@@ -38,6 +38,8 @@ namespace Parcial2_Grupo6
 
             instance.comentarios.InsertOnSubmit(comentarios);
             instance.SubmitChanges();
+
+            Response.Redirect("ingresoAlumnos.aspx");
         }
     }
 }

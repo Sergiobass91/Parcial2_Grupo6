@@ -4,7 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Mostrar Datos</title>
+    <script defer="defer" src="src/JS/index.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">

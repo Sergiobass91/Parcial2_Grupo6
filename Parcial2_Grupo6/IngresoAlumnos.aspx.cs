@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
+using System.Text;
 using System.Web.UI.WebControls;
 
 namespace Parcial2_Grupo6
@@ -10,12 +8,23 @@ namespace Parcial2_Grupo6
     public partial class IngresoAlumnos : System.Web.UI.Page
     {
         private DataLinqClassDataContext instance;
-        //public void CleanForm() {
-        //    foreach (Control c in this.Controls) {
-        //        if (c is TextBox)
-        //            //falta resolver clean
-        //    }
-        //}
+
+        public bool IsDocumentExists(int dni_alumno) {
+            var consultaDNI = instance.alumnos.Where(dni => dni_alumno == dni.dni_alumno).Select(datos => datos);
+            return consultaDNI.Any();
+        }
+        
+        //Creamos objeto que cree ventana de alerta
+        public void Alert(string msg)
+        {
+            string sMsg = msg.Replace("\"", "'");
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<script language='javascript'>");
+            sb.Append("alert('" + sMsg + "');");
+            sb.Append("</script>");
+            string content = sb.ToString();
+            ClientScript.RegisterClientScriptBlock(this.GetType(), "AlertMessage", content, false);
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             instance = new DataLinqClassDataContext();
@@ -32,6 +41,13 @@ namespace Parcial2_Grupo6
 
         protected void Enviar_Click(object sender, EventArgs e)
         {
+            //Primer revisamos documento existe en DB
+            int document = Convert.ToInt32(txtDocumento.Text);
+            if (IsDocumentExists(document)) {
+                Alert("El documento ingresado ya existe en nuestros registros");
+                return;
+            }
+
             alumno alumnos = new alumno
             {
                 apellido_alumno = txtApellido.Text,

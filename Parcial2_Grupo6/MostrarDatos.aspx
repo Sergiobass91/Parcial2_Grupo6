@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Mostrar Datos</title>
+    <script defer="defer" src="src/JS/comentario.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -31,7 +32,7 @@
 
             <asp:TextBox runat="server" id="txtComentario" TextMode="MultiLine" Columns="50" Rows="5" placeholder="Ingrese un comentario"/>
             <br />
-            <asp:Button Text="Agregar comentario" runat="server" id="btnEnviar" onClick="Enviar_Click"/>
+            <asp:Button Text="Agregar comentario" runat="server" id="btnEnviarComentario" onClick="Enviar_Click"/>
         </div>
     </form>
 </body>
