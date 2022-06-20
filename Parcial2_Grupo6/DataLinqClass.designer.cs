@@ -101,7 +101,7 @@ namespace Parcial2_Grupo6
 		
 		private string _turno_alumno;
 		
-		private EntitySet<comentario> _comentarios;
+		private EntityRef<comentario> _comentario;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -121,7 +121,7 @@ namespace Parcial2_Grupo6
 		
 		public alumno()
 		{
-			this._comentarios = new EntitySet<comentario>(new Action<comentario>(this.attach_comentarios), new Action<comentario>(this.detach_comentarios));
+			this._comentario = default(EntityRef<comentario>);
 			OnCreated();
 		}
 		
@@ -225,16 +225,32 @@ namespace Parcial2_Grupo6
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="alumno_comentario", Storage="_comentarios", ThisKey="dni_alumno", OtherKey="dni_alumno")]
-		public EntitySet<comentario> comentarios
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="alumno_comentario", Storage="_comentario", ThisKey="dni_alumno", OtherKey="dni_alumno", IsUnique=true, IsForeignKey=false)]
+		public comentario comentario
 		{
 			get
 			{
-				return this._comentarios;
+				return this._comentario.Entity;
 			}
 			set
 			{
-				this._comentarios.Assign(value);
+				comentario previousValue = this._comentario.Entity;
+				if (((previousValue != value) 
+							|| (this._comentario.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._comentario.Entity = null;
+						previousValue.alumno = null;
+					}
+					this._comentario.Entity = value;
+					if ((value != null))
+					{
+						value.alumno = this;
+					}
+					this.SendPropertyChanged("comentario");
+				}
 			}
 		}
 		
@@ -257,18 +273,6 @@ namespace Parcial2_Grupo6
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-		
-		private void attach_comentarios(comentario entity)
-		{
-			this.SendPropertyChanging();
-			entity.alumno = this;
-		}
-		
-		private void detach_comentarios(comentario entity)
-		{
-			this.SendPropertyChanging();
-			entity.alumno = null;
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.comentarios")]
@@ -276,8 +280,6 @@ namespace Parcial2_Grupo6
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_comentario;
 		
 		private int _dni_alumno;
 		
@@ -291,8 +293,6 @@ namespace Parcial2_Grupo6
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onid_comentarioChanging(int value);
-    partial void Onid_comentarioChanged();
     partial void Ondni_alumnoChanging(int value);
     partial void Ondni_alumnoChanged();
     partial void Onapellido_alumnoChanging(string value);
@@ -305,26 +305,6 @@ namespace Parcial2_Grupo6
 		{
 			this._alumno = default(EntityRef<alumno>);
 			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_comentario", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id_comentario
-		{
-			get
-			{
-				return this._id_comentario;
-			}
-			set
-			{
-				if ((this._id_comentario != value))
-				{
-					this.Onid_comentarioChanging(value);
-					this.SendPropertyChanging();
-					this._id_comentario = value;
-					this.SendPropertyChanged("id_comentario");
-					this.Onid_comentarioChanged();
-				}
-			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dni_alumno", DbType="Int NOT NULL", IsPrimaryKey=true)]
@@ -408,12 +388,12 @@ namespace Parcial2_Grupo6
 					if ((previousValue != null))
 					{
 						this._alumno.Entity = null;
-						previousValue.comentarios.Remove(this);
+						previousValue.comentario = null;
 					}
 					this._alumno.Entity = value;
 					if ((value != null))
 					{
-						value.comentarios.Add(this);
+						value.comentario = this;
 						this._dni_alumno = value.dni_alumno;
 					}
 					else

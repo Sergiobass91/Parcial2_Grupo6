@@ -7,12 +7,11 @@
       <Column Name="apellido_alumno" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="email_alumno" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
       <Column Name="turno_alumno" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Association Name="alumno_comentario" Member="comentarios" ThisKey="dni_alumno" OtherKey="dni_alumno" Type="comentario" />
+      <Association Name="alumno_comentario" Member="comentario" ThisKey="dni_alumno" OtherKey="dni_alumno" Type="comentario" Cardinality="One" />
     </Type>
   </Table>
   <Table Name="dbo.comentarios" Member="comentarios">
     <Type Name="comentario">
-      <Column Name="id_comentario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="dni_alumno" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="apellido_alumno" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="comentario_alumno" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />

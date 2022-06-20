@@ -10,8 +10,14 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:GridView runat="server" ID="GridView1"></asp:GridView>
-
+            <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="False" BorderStyle="Solid" BorderWidth="10px">
+                <Columns>
+                    <asp:BoundField DataField="dni_alumno" HeaderText="DNI"/>
+                    <asp:BoundField DataField="apellido_alumno" HeaderText="Apellido"/>
+                    <asp:BoundField DataField="comentario_alumno" HeaderText="Comentario"/>
+                </Columns>
+            </asp:GridView>
+            <br />
             <asp:Button Text="Volver" runat="server" onClick="Volver_Click"/>
         </div>
     </form>

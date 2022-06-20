@@ -23,5 +23,18 @@ namespace Parcial2_Grupo6
         {
             Response.Redirect("ingresoAlumnos.aspx");
         }
+        //protected void Editar_Click(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //protected void Eliminar_Click(object sender, EventArgs e)
+        //{
+        //    string selectedGrid = GridView1.SelectedIndex.ToString();
+        //    IQueryable<comentario> deleteComment = instance.comentarios.Where(dato => dato.dni_alumno.ToString() == selectedGrid);
+
+        //    instance.comentarios.DeleteAllOnSubmit(deleteComment);
+        //    instance.SubmitChanges();
+        //}
     }
 }
